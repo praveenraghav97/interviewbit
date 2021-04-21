@@ -1,0 +1,26 @@
+public class Solution {
+    public ArrayList<Integer> plusOne(ArrayList<Integer> A) {
+        int carry = 1;
+        ArrayList<Integer> al = new ArrayList<Integer>();
+        for(int i = A.size() - 1; i >= 0; i--) {
+            int x = A.get(i) + carry;
+            carry = x / 10;
+            al.add(x % 10);
+            //System.out.println(carry + " " + x);
+        }
+        if(carry > 0) { //Must Line to be checked
+            al.add(carry);
+        }
+        int p = 0;
+        Collections.reverse(al);
+        while(al.size() > 0) { //Must line...remeber I had exception here..
+            if(al.get(0) == 0) {
+                al.remove(0);
+            } else {
+                break;
+            }
+           
+        }
+        return al;
+    }
+}
