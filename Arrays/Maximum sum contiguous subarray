@@ -1,0 +1,37 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public int maxSubArray(final List<Integer> A) {
+        int n = A.size();
+        if(n == 0) {
+            return 0;
+        }
+        if(n == 1) {
+            return A.get(0);
+        }
+        int bool = 0;
+        for(int x : A) {
+            if(x >= 0) bool++;
+        }
+        if(bool == 0) {
+            int max = A.get(0);
+            for(int i = 1; i < n; i++) {
+                if(A.get(i) > max ){
+                    max = A.get(i);
+                }
+            }
+            return max;
+        }
+        int globalMax = 0;
+        int maxSoFar = 0;
+        for(int i = 0; i < n; i++ ) {
+            maxSoFar = maxSoFar + A.get(i);
+            if(maxSoFar > globalMax) {
+                globalMax = maxSoFar;
+            }
+            if(maxSoFar <= 0) {
+                maxSoFar = 0;
+            }
+        }
+        return globalMax;
+    }
+}
