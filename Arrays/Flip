@@ -1,0 +1,39 @@
+public class Solution {
+    public ArrayList<Integer> flip(String A) {
+        
+        int ans = -1;
+        int start = 0;
+        int end = 0;
+        int len = 0;
+        int sFlag = 0;
+        
+        for(int i = 0; i < A.length(); i++) {
+            if(A.charAt(i) == '0') {
+                len++;
+            } else {
+                len--;
+            }
+            
+            if(len >= 0) {
+                if(len > ans) {
+                    start = sFlag;
+                    end = i; 
+                    ans = len;
+                }
+            }
+            
+            if(len < 0) {
+                len = 0;
+                sFlag = i + 1;
+            }
+            
+        }
+        ArrayList<Integer> l = new ArrayList<>();
+        if(ans > 0) {
+            
+            l.add(start + 1);
+            l.add(end + 1);
+        }
+        return l;
+    }
+}
