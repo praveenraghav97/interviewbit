@@ -5,12 +5,12 @@ public class Solution {
         List<Integer> A = new ArrayList<>(B);
         int n = A.size();
         
-        Collections.sort(A, new Comparator<String>(){
-            @override
-            public int compare(String X, String Y) {
-                String XY = X + Y;
+        Collections.sort(A, new Comparator<Integer>(){
+            //@override
+            public int compare(Integer X, Integer Y) {
+                String XY = String.valueOf(X) + Y;
                 
-                String YX = Y + X;
+                String YX = String.valueOf(Y) + X;
                 
                 return XY.compareTo(YX) > 0 ? -1 : 1;
             }
