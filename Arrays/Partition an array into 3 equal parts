@@ -1,0 +1,35 @@
+public class Solution {
+    public int solve(int A, ArrayList<Integer> B) {
+        int sum1 = 0;
+        int ans = 0;
+        int sum2 = 0;
+        int sum = 0;
+        
+        for(int x : B){
+            sum += x;
+        }
+        
+        if(sum % 3 != 0) return 0;
+        
+        sum1 = sum/3;
+        sum2 = 2 * sum1;
+        
+        int c = 0;
+        int t = 0;
+        
+        for(int i=0; i < A - 1; i++) { //A - 1 must be remembered.
+            
+            t += B.get(i);
+            
+            
+            if(t == sum2) {
+                ans += c;
+            }
+            
+            if(t == sum1) {
+                c++;
+            }
+        }
+        return ans;
+    }
+}
