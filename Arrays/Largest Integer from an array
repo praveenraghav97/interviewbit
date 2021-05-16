@@ -1,0 +1,31 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public String largestNumber(final List<Integer> B) {
+        
+        List<Integer> A = new ArrayList<>(B);
+        int n = A.size();
+        
+        Collections.sort(A, new Comparator<String>(){
+            @override
+            public int compare(String X, String Y) {
+                String XY = X + Y;
+                
+                String YX = Y + X;
+                
+                return XY.compareTo(YX) > 0 ? -1 : 1;
+            }
+        });
+        
+        StringBuilder s = new StringBuilder();
+        int flag = 0;
+        for(int x : A) {
+            if(x != 0) {
+                flag = 1;
+            }
+            s.append(x);
+        }
+        if(flag == 0) return "0";
+        
+        return s.toString();
+    }
+}
