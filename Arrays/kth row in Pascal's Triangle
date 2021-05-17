@@ -1,0 +1,35 @@
+public class Solution {
+    
+    public static void binomial(int n, ArrayList<Integer> ls) {
+        
+        if(n == 0) {
+            ls.add(1);
+            return;
+        }
+        
+        //if(k > n - k) k = n - k;
+        
+        int ans = 1;
+        
+        ls.add(ans);
+        
+        for(int i = 1; i <= n; i++) {
+            int temp = ans * (n - i + 1);
+            temp /= i;
+            ls.add(temp);
+            ans = temp;
+            
+        }
+        //return ans;
+        
+    }
+    
+    
+    public ArrayList<Integer> getRow(int n) {
+        
+        ArrayList<Integer> ans = new ArrayList<>();
+        binomial(n, ans);
+        return ans;
+        
+    }
+}
