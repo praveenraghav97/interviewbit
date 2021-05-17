@@ -1,0 +1,29 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public ArrayList<Integer> repeatedNumber(final List<Integer> A) {
+        
+        if(A == null || A.size() == 0) return new ArrayList<Integer>();
+        
+        boolean[] arr = new boolean[A.size() + 1];
+        int a = 0;
+        int b = 0;
+        
+        for(int i = 0; i < A.size(); i++) {
+            if(arr[A.get(i)] == true){
+                a = A.get(i);
+                //break;
+            } else {
+                arr[A.get(i)] = true;
+            }
+        }
+        
+        for(int i = 0; i < arr.length; i++) {
+           if(arr[i] == false) b = i; 
+        }
+        
+        ArrayList<Integer> l = new ArrayList<>();
+        l.add(a);
+        l.add(b);
+        return l;
+    }
+}
