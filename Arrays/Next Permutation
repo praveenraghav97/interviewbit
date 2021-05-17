@@ -1,0 +1,41 @@
+public class Solution {
+    public ArrayList<Integer> nextPermutation(ArrayList<Integer> a) {
+        
+        if( a == null || a.size() <= 1) return a;
+        
+        int peak = -1;
+        int n = a.size();
+        
+        
+        for(int i = 1; i < n; i++ ) {
+            if(a.get(i) > a.get(i - 1)){
+                peak = i;
+            }
+        }
+        
+        if(peak == -1) {
+            for(int i = 0; i < n/2; i++) {
+                int t = a.get(i);
+                a.set(i, a.get(n-i-1));
+                a.set(n - i - 1, t);
+            }
+            return a;
+        }
+        
+        
+        int idx = peak;
+        
+        for(int i = peak; i < n; i++) {
+            if(a.get(i) > a.get(peak - 1) && a.get(i) < a.get(peak)) {
+                idx = i;
+            }
+        }
+        int t = a.get(peak - 1);
+        a.set(peak - 1, a.get(idx));
+        a.set(idx, t);
+        
+        Collections.sort(a.subList(peak, n));
+        
+        return a;
+    }
+}
